@@ -1,7 +1,7 @@
 [
-    {
+    { 
         "include": [
-            "~/.dotfiles/waybar/bars/main.jsonc"
+            "~/.dotfiles/waybar/bars/project.jsonc"
         ]
     }
 ]

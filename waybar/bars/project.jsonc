@@ -1,0 +1,103 @@
+// -* mode: jsonc -*-
+{
+    "layer": "top",
+    "position": "top",
+    "margin": "5 2 5 2",
+    "spacing": 4,
+    "reload_style_on_change": true,
+
+    "modules-left": [
+        "privacy",
+        "hyprland/window"
+    ],
+
+    "modules-center": [
+        "hyprland/workspaces",
+        "hyprland/submap"
+    ],
+
+    "modules-right": [
+        "battery"
+    ],
+
+////
+// Left Modules
+////
+    "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 18,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-out",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+        ]
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "all-outputs": true,
+        "sort-by-number": true,
+        "format-icons": {
+            "1" : "一",
+            "2" : "二",
+            "3" : "三",
+            "4" : "四",
+            "5" : "五",
+            "6" : "六",
+            "7" : "七",
+            "8" : "八",
+            "9" : "九",
+            "10": "十"
+        }
+    },
+    "hyprland/submap": {
+        "format": "{}",
+        //"max-length": 8,
+        "tooltip": false
+    },
+
+////
+// Middle Modules
+////
+    "hyprland/window": {
+        "format": "{}",
+        "separate-outputs": true
+    },
+
+////
+//Right Modules
+////
+    "battery": {
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "max-length": 25
+    },
+
+    "clock": {
+        "interval": 60,
+        "tooltip": true,
+        "format": "{:%H.%M}",
+        "tooltip-format": "{:%Y-%m-%d}",
+    }
+
+
+}
