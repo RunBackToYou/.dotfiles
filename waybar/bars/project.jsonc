@@ -18,9 +18,13 @@
 
     "modules-right": [
         "tray",
+        "pulseaudio",
+        "backlight",
         "temperature",
-        "clock",
-        "battery"
+        "power-profiles-daemon",
+        "battery",
+        "network",
+        "clock"
     ],
 
 ////
@@ -48,7 +52,6 @@
             }
         ]
     },
-
     "hyprland/workspaces": {
         "format": "{icon}",
         "on-click": "activate",
@@ -84,6 +87,54 @@
 ////
 //Right Modules
 ////
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+            "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "phone-muted": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol",
+        "ignored-sinks": ["Easy Effects Sink"]
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureC}°C ",
+        "format-icons": ["", "", ""]
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+        "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
     "battery": {
         "interval": 60,
         "states": {
@@ -91,29 +142,33 @@
             "critical": 15
         },
         "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""],
         "max-length": 25
     },
-
+    "network": {
+        //"interface": "wlp2s0",
+        "format": "{ifname}",
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+        "format-disconnected": "", //An empty format will hide the module.
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "max-length": 50
+    },
     "clock": {
         "interval": 60,
         "tooltip": true,
-        "format": "{:%H.%M}",
+        "format": "{:%H:%M}",
         "tooltip-format": "{:%Y-%m-%d}",
-    },
-
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        "format-critical": "{temperatureC}°C ",
-        "format": "{temperatureC}°C "
-    },
-
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
     }
-
 
 }

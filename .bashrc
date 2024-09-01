@@ -22,13 +22,13 @@ shopt -s autocd
 shopt -s cdspell
 shopt -s cmdhist
 shopt -s histappend
-shopt -s expand-aliases
+shopt -s expand_aliases
 shopt -s checkwinsize
 
 export HISTFILESIZE='INFINITY'
 
 ## AUTORUNS STARTUP
-neofetch  # currently inactive due to battery concerns
+#neofetch  # currently inactive due to battery concerns
 
 ### DISPLAY ERROR CODES
 EC() {
